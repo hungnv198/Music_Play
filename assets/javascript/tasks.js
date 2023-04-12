@@ -102,8 +102,8 @@ const app = {
         Object.defineProperty(this, "currentSong", {
             get: function () {
                 return this.songs[this.currentIndex];
-            }
-        })
+            },
+        });
     },
     //Tạo hàm render các data-song 
     renderList: function(){
