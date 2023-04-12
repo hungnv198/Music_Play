@@ -150,8 +150,9 @@ const app = {
                 if((_this.isShuffle)&&(_this.arrSongPlayed.length > _this.songs.length)){
                     _this.arrSongPlayed = [];
                     _this.shuffleSong();
+                } else {
+                    audio.play();
                 }
-                audio.play();
         }
         }
         //khi bai hat player: lang nghe
