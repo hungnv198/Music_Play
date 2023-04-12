@@ -316,7 +316,6 @@ const app = {
         
     },
     loadCurrentSong: function(){
-        _this = this;
         //Load nội dung theo tên bài hát hiện tại
         console.log(this.currentSong);
         heading.textContent = this.currentSong.name;
@@ -325,11 +324,11 @@ const app = {
         //Lấy về tổng thời gian của bài hát
         audio.onloadedmetadata = function(){
             var time = audio.duration;
-            var lineSong = _this.formatTime(time);
+            var lineSong = this.formatTime(time);
             lineLength.innerHTML = lineSong;
         }
         this.activeSong();
-        _this.scrollToActiveSong();
+        this.scrollToActiveSong();
         this.setConfig('currentIndex', this.currentIndex);
     },
     loadConfig: function(){
