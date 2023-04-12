@@ -324,7 +324,7 @@ const app = {
         //Lấy về tổng thời gian của bài hát
         audio.onloadedmetadata = function(){
             var time = audio.duration;
-            var lineSong = this.formatTime(time);
+            var lineSong = _this.formatTime(time);
             lineLength.innerHTML = lineSong;
         }
         this.activeSong();
