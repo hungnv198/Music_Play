@@ -335,7 +335,6 @@ const app = {
         }
         this.activeSong();
         this.setConfig('currentIndex', 0);
-
     },
     loadConfig: function(){
         this.isRepeat = this.config.isRepeat;
