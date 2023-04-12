@@ -334,7 +334,10 @@ const app = {
             lineLength.innerHTML = lineSong;
         }
         this.activeSong();
-        this.setConfig('currentIndex', this.currentIndex);
+        this.setConfig('currentIndex', 0);
+        this.setConfig('isShuffle',  this.isShuffle);
+        this.setConfig('isRepeat',  this.isRepeat);
+
     },
     loadConfig: function(){
         this.isRepeat = this.config.isRepeat;
