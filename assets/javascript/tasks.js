@@ -99,7 +99,7 @@ const app = {
         }
     ],
     defineProperties: function (){
-        Object.defineProperty(this, "currentSong", {
+        Object.defineProperty(app, "currentSong", {
             get: function () {
                 return this.songs[this.currentIndex];
             },
