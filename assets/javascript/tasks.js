@@ -317,7 +317,7 @@ const app = {
     loadCurrentSong: function(){
         _this = this
         //Load nội dung theo tên bài hát hiện tại
-        heading.textContent = this.currentSong.name;
+        heading.textContent = _this.currentSong.name;
         thumbElement.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.source;
         //Lấy về tổng thời gian của bài hát
