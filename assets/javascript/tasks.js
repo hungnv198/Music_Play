@@ -432,6 +432,9 @@ const app = {
         return (hours !== 0 ? hours + ':' : '') + minutes + ':' + seconds;
     },
     start:function(){
+        //
+        //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
+        this.loadCurrentSong();
         //Gan cau hinh tu config
         this.loadConfig();
         //định nghĩa các thuộc tính cho object
@@ -439,8 +442,7 @@ const app = {
         this.renderList();
         //lắng nghe xử lý các sự kiện
         this.handleEvent();
-        //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
-        this.loadCurrentSong();
+        
     }
     
 }
