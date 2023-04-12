@@ -419,18 +419,20 @@ const app = {
         return (hours !== 0 ? hours + ':' : '') + minutes + ':' + seconds;
     },
     start:function(){
-        //Gan cau hinh tu config
-        this.loadConfig();
-        shuffleElement.classList.toggle("active", this.isShuffle);
+        this.renderList();
+        
         //định nghĩa các thuộc tính cho object
         this.defineProperties();
-        this.renderList();
+        
+        //Gan cau hinh tu config
+        this.loadConfig();
+        
+        //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
+        this.loadCurrentSong();
         
         //lắng nghe xử lý các sự kiện
         this.handleEvent();
 
-        //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
-        this.loadCurrentSong();
     }
     
 }
