@@ -101,6 +101,7 @@ const app = {
     defineProperties: function () {
         Object.defineProperty(this, "currentSong", {
             get: function () {
+                console.log(this.currentSong);
                 return app.songs[app.currentIndex];
             },
         });
@@ -334,21 +335,7 @@ const app = {
     loadConfig: function(){
         this.isRepeat = this.config.isRepeat;
         this.isShuffle = this.config.isShuffle;
-
-        shuffleElement.classList.toggle("active", this.isShuffle);
-
-        if(this.isRepeat == 1){
-            repeatElement.classList.add('active');
-        } else if(this.isRepeat == 2){
-            repeatElement.classList.add('active');
-            repeatOne.classList.add('active');
-        } else{
-            repeatOne.classList.remove('active');
-            repeatElement.classList.remove('active');
-            this.isRepeat = 0;
-        }
         this.currentIndex = this.config.currentIndex;
-
     },
     activeSong: function(){
         const boxActiveSong = $('.boxlist__song.active');
@@ -434,13 +421,16 @@ const app = {
     start:function(){
         //Gan cau hinh tu config
         this.loadConfig();
+        shuffleElement.classList.toggle("active", this.isShuffle);
         //định nghĩa các thuộc tính cho object
         this.defineProperties();
         this.renderList();
-        //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
-        this.loadCurrentSong();
+        
         //lắng nghe xử lý các sự kiện
         this.handleEvent();
+
+        //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
+        this.loadCurrentSong();
     }
     
 }
