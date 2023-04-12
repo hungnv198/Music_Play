@@ -99,7 +99,7 @@ const app = {
         }
     ],
     defineProperties: function (){
-        Object.defineProperty(this, 'currentSong', {
+        Object.defineProperty(this, "currentSong", {
             get: function () {
                 return this.songs[this.currentIndex];
             }
@@ -315,7 +315,6 @@ const app = {
         
     },
     loadCurrentSong: function(){
-        _this = this
         //Load nội dung theo tên bài hát hiện tại
         heading.textContent = _this.currentSong.name;
         thumbElement.style.backgroundImage = `url('${this.currentSong.image}')`;
