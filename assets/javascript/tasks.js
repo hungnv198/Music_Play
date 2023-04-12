@@ -315,7 +315,9 @@ const app = {
         
     },
     loadCurrentSong: function(){
+        _this = this;
         //Load nội dung theo tên bài hát hiện tại
+        console.log(this.currentSong);
         heading.textContent = this.currentSong.singer;
         thumbElement.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.source;
@@ -350,7 +352,7 @@ const app = {
     },
     activeSong: function(){
         const boxActiveSong = $('.boxlist__song.active');
-        const activeSong = $(`.data-song-${_this.currentIndex}`);
+        const activeSong = $(`.data-song-${this.currentIndex}`);
         if(boxActiveSong == null){
             activeSong.classList.add('active');
         } else {
@@ -359,7 +361,7 @@ const app = {
         }
     },
     scrollToActiveSong: function(){
-        const songActive = $(`.data-song-${_this.currentIndex}.active`);
+        const songActive = $(`.data-song-${this.currentIndex}.active`);
         setTimeout(function(){
             songActive.scrollIntoView({
                 behavior: 'smooth',
