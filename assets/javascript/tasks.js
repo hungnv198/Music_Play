@@ -101,6 +101,11 @@ const app = {
     defineProperties: function () {
         Object.defineProperty(this, "currentSong", {
             get: function () {
+                if(this.currentIndex == null){
+                    this.currentIndex = 0;
+                } else {
+                    this.currentIndex = this.currentIndex;
+                }
                 return this.songs[this.currentIndex];
             },
         });
