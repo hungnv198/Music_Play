@@ -316,6 +316,7 @@ const app = {
         
     },
     loadCurrentSong: function(){
+    _this = this;
         //Load nội dung theo tên bài hát hiện tại
         console.log(this.currentSong);
         heading.textContent = this.currentSong.name;
