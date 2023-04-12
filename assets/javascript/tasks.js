@@ -160,6 +160,8 @@ const app = {
             _this.isPlaying = true;
             playBtn.classList.add("active");
             thumnailAnimate.play();
+            _this.scrollToActiveSong();
+
         };
         audio.onpause = function(){
             _this.isPlaying = false;
@@ -316,9 +318,7 @@ const app = {
         
     },
     loadCurrentSong: function(){
-    _this = this;
-        //Load nội dung theo tên bài hát hiện tại
-        console.log(this.currentSong);
+        _this = this;
         heading.textContent = this.currentSong.name;
         thumbElement.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.source;
@@ -329,7 +329,6 @@ const app = {
             lineLength.innerHTML = lineSong;
         }
         this.activeSong();
-        this.scrollToActiveSong();
         this.setConfig('currentIndex', this.currentIndex);
     },
     loadConfig: function(){
