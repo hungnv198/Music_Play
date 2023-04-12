@@ -1,0 +1,16 @@
+/* PC Resolution */
+@media (min-width: 1024px) {
+    
+}
+
+/* Tablet resolution */
+@media (min-width:740px) and (max-width:1023px){
+    body{
+        height: 100vh;
+    }
+}
+
+/* Mobile resolution */
+@media (max-width:739px){
+
+}
