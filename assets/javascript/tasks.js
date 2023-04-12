@@ -4,11 +4,10 @@ const $$ = document.querySelectorAll.bind(document);
 
 const PLAYER_STORAGE_KEY = 'Hunee'
 //lấy ra kích thước của cd thumbnail
-var thumbnailElement = $('.boxplay__thumbnail');
+const thumbnailElement =$('.boxplay__thumbnail');
 var thumbnailElementWidth = thumbnailElement.offsetWidth;
 var thumbnailElementHeight = thumbnailElement.offsetHeight;
 const heading = $('.boxplay__heading-name');
-const thumbElement =$('.boxplay__thumbnail');
 const audio = $('#audio');
 const playBtn = $('.button__play-pause');
 const lineElement = $('.line');
@@ -36,12 +35,8 @@ const app = {
     isPlaying : false,
     isShuffle: false,
     isRepeat: 0,
-    config : JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY))|| {},
     currentIndex : 0,
-    setConfig: function(key, value){
-        this.config[key] = value;
-        localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
-    },
+    
     songs : [
         {   
             name: "Anh sẽ ổn thôi",
@@ -101,10 +96,14 @@ const app = {
     defineProperties: function () {
         Object.defineProperty(this, "currentSong", {
             get: function () {
-                console.log(this.currentSong);
-                return app.songs[app.currentIndex];
+                return this.songs[this.currentIndex];
             },
         });
+    },
+    config : JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY))|| {},
+    setConfig: function(key, value){
+        this.config[key] = value;
+        localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
     },
     //Tạo hàm render các data-song 
     renderList: function(){
@@ -248,29 +247,20 @@ const app = {
         //Shuffle bài hát
         shuffleElement.onclick = function() {
             _this.isShuffle = !_this.isShuffle;
-            _this.setConfig('isShuffle',  _this.isShuffle);
             shuffleElement.classList.toggle("active", _this.isShuffle);
             if(_this.isShuffle){
                 _this.shuffleSong();
             } else {
                 _this.arrSongPlayed = [];
             }
+            _this.setConfig('isShuffle',  _this.isShuffle);
             
         };
 
         //Xử lý lặp lại bài hát
         repeatElement.onclick = function() {
             _this.isRepeat++;
-            if(_this.isRepeat == 1){
-                repeatElement.classList.add('active');
-            } else if(_this.isRepeat == 2){
-                repeatElement.classList.add('active');
-                repeatOne.classList.add('active');
-            } else{
-                repeatOne.classList.remove('active');
-                repeatElement.classList.remove('active');
-                _this.isRepeat = 0;
-            }
+            _this.configShow();
             _this.setConfig('isRepeat',  _this.isRepeat);
 
         };
@@ -320,8 +310,11 @@ const app = {
     },
     loadCurrentSong: function(){
         _this = this;
+        if(this.currentIndex === undefined){
+            this.currentIndex = 0;
+        }
         heading.textContent = this.currentSong.name;
-        thumbElement.style.backgroundImage = `url('${this.currentSong.image}')`;
+        thumbnailElement.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.source;
         //Lấy về tổng thời gian của bài hát
         audio.onloadedmetadata = function(){
@@ -338,6 +331,7 @@ const app = {
         this.isRepeat = this.config.isRepeat;
         this.isShuffle = this.config.isShuffle;
         this.currentIndex = this.config.currentIndex;
+        console.log(this.currentIndex);
     },
     activeSong: function(){
         const boxActiveSong = $('.boxlist__song.active');
@@ -420,21 +414,36 @@ const app = {
         }
         return (hours !== 0 ? hours + ':' : '') + minutes + ':' + seconds;
     },
+    configShow: function(){
+        if(this.isRepeat == 1){
+            repeatElement.classList.add('active');
+        } else if(this.isRepeat == 2){
+            repeatElement.classList.add('active');
+            repeatOne.classList.add('active');
+        } else{
+            repeatOne.classList.remove('active');
+            repeatElement.classList.remove('active');
+            this.isRepeat = 0;
+        }
+        if(this.isShuffle) {
+            shuffleElement.classList.add("active");
+        } else {
+            shuffleElement.classList.remove("active");
+
+        }
+    }
+    ,
+
     start:function(){
+        this.loadConfig();
         this.renderList();
-        
         //định nghĩa các thuộc tính cho object
         this.defineProperties();
-        
-        //Gan cau hinh tu config
-        this.loadConfig();
-        
-        //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
-        this.loadCurrentSong();
-
         //lắng nghe xử lý các sự kiện
         this.handleEvent();
-
+        //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
+        this.loadCurrentSong();
+        this.configShow();
     }
     
 }
