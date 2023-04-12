@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Music Player</title>
+    <!-- link icon favicon -->
+    <link rel="shortcut icon" href="./assets/icon/wave_music.png" type="image/x-icon">
+    <!-- link file css -->
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <!-- link icon -->
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.3.0-web/css/all.min.css">
+</head>
+<body>
+    <div class="music__player">
+        <!-- Header -->
+        <div class="header">
+            <div class="grid wide">
+                <!-- BoxPlay -->
+                <div class=" boxplay">
+                    <!-- BoxPlay heading -->
+                    <div class="boxplay__heading">
+                        <span class="boxplay__heading-title">Song Playing</span>
+                        <span class="boxplay__heading-name">Name Song</span>
+                    </div>
+                    <!-- BoxPlay Thumbnail -->
+                    <div class="boxplay__thumbnail">
+                    </div>
+                    <!-- BoxPlay Button -->
+                    <div class="boxplay__button">
+                        <div class="button-item button-repeat">
+                            <i class="icon-repeat fa-solid fa-repeat">
+                                <span class="number">1</span>
+                            </i>
+                        </div>
+                        <div class="button-item">
+                            <i class="icon-previous fa-solid fa-backward-step"></i>
+                        </div>
+                        <div class="button-item button__play-pause">
+                            <i class="icon__play fa-solid fa-play"></i>
+                            <i class="icon__pause fa-solid fa-pause"></i>
+                        </div>
+                        <div class="button-item">
+                            <i class="icon-next fa-solid fa-forward-step"></i>
+                        </div>
+                        <div class="button-item">
+                            <i class="icon-shuffle  fa-solid fa-shuffle"></i>
+                        </div>
+                    </div>
+                    <!-- BoxPlay Process -->
+                    <div class="boxplay__process">
+                        <div class="boxplay__process-line">
+                            <input style = "background-size: 0% 100%;" class="line" type="range" min="0" max="100" value="0" step="0.1">
+                            <div class="boxplay__volume">
+                                <label for="check-volume" class="icon-volume">
+                                    <i class="volume-high active fa-solid fa-volume-high"></i>
+                                    <i class="volume-low  fa-solid fa-volume-low"></i>
+                                    <i class="volume-mute  fa-solid fa-volume-mute"></i>
+                                </label>
+                                <div class="boxplay__volume-bar">
+                                    <input style = "background-size: 100% 100%;" type= "range" class="volume__bar" value="100" min="0" max="100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="boxplay__process-time">
+                            <span class="time__current">0:00</span>
+                            <span class="time__length">4:40</span>
+                        </div>
+                    </div>
+                    <!-- BoxPlay Video -->
+                    <audio preload="metadata" id ="audio" src=""></audio>
+                </div>
+            </div>
+        </div>
+        <!-- Body -->
+        <div class="container">
+           <div class="grid wide">
+                <div class="boxlist">
+
+                </div>
+           </div>
+        </div>
+    </div>
+    <!-- Script -->
+    <script src="./tasks.js"></script>
+</body>
+</html>
