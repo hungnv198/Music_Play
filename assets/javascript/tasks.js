@@ -335,8 +335,6 @@ const app = {
         }
         this.activeSong();
         this.setConfig('currentIndex', 0);
-        this.setConfig('isShuffle',  this.isShuffle);
-        this.setConfig('isRepeat',  this.isRepeat);
 
     },
     loadConfig: function(){
