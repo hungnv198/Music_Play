@@ -331,6 +331,8 @@ const app = {
         }
         this.activeSong();
         this.setConfig('currentIndex', this.currentIndex);
+        this.setConfig('isRepeat', this.isRepeat);
+        this.setConfig('isShuffle', this.isShuffle);
     },
     loadConfig: function(){
         this.isRepeat = this.config.isRepeat;
@@ -429,7 +431,7 @@ const app = {
         
         //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
         this.loadCurrentSong();
-        
+
         //lắng nghe xử lý các sự kiện
         this.handleEvent();
 
