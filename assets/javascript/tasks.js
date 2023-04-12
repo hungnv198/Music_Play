@@ -96,10 +96,10 @@ const app = {
             singer: "Vương Anh Tú",
             source: "./assets/music/XinNguoiNhoTen-VuongAnhTu.mp3",
             image: "./assets/image/image\(9\).jpg"
-        }
+        },
     ],
-    defineProperties: function (){
-        Object.defineProperty(app, "currentSong", {
+    defineProperties: function () {
+        Object.defineProperty(this, "currentSong", {
             get: function () {
                 return this.songs[this.currentIndex];
             },
@@ -318,7 +318,7 @@ const app = {
         _this = this;
         //Load nội dung theo tên bài hát hiện tại
         console.log(this.currentSong);
-        heading.textContent = this.currentSong.singer;
+        heading.textContent = this.currentSong.name;
         thumbElement.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.source;
         //Lấy về tổng thời gian của bài hát
